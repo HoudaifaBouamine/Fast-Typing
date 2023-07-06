@@ -1,0 +1,6 @@
+C:\Users\admin\Desktop\git\FastTyping\WindowsFormsControlLibrary1\bin\Debug\WindowsFormsControlLibrary1.dll
+C:\Users\admin\Desktop\git\FastTyping\WindowsFormsControlLibrary1\bin\Debug\WindowsFormsControlLibrary1.pdb
+C:\Users\admin\Desktop\git\FastTyping\WindowsFormsControlLibrary1\obj\Debug\TypingBoard.csproj.AssemblyReference.cache
+C:\Users\admin\Desktop\git\FastTyping\WindowsFormsControlLibrary1\obj\Debug\TypingBoard.csproj.CoreCompileInputs.cache
+C:\Users\admin\Desktop\git\FastTyping\WindowsFormsControlLibrary1\obj\Debug\WindowsFormsControlLibrary1.dll
+C:\Users\admin\Desktop\git\FastTyping\WindowsFormsControlLibrary1\obj\Debug\WindowsFormsControlLibrary1.pdb
