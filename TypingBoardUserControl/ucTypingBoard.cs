@@ -11,7 +11,7 @@ using System.Reflection.Emit;
 
 namespace WindowsFormsControlLibrary1
 {
-    public partial class ucTypingBoard: UserControl
+    public partial class ucTypingBoard : UserControl
     {
         public ucTypingBoard()
         {
@@ -19,14 +19,17 @@ namespace WindowsFormsControlLibrary1
 
             this.words = new List<string>();
             // Note (Houdaifa) this is Only for testing , delete it next 
+
+            this.words.Add("dad");
             this.words.Add("houdaifa");
             this.words.Add("bouamine");
-            this.words.Add("hhhhhh");
-            this.words.Add("wdoawmoda");
-            this.words.Add("12345");
+            this.words.Add("hello");
 
-            this.words.Add("othaila");
             this.words.Add("dad");
+            this.words.Add("houdaifa");
+            this.words.Add("bouamine");
+            this.words.Add("hello");
+
             //
 
             load_words();
@@ -35,7 +38,7 @@ namespace WindowsFormsControlLibrary1
 
         }
 
-        public ucTypingBoard(List <string> words)
+        public ucTypingBoard(List<string> words)
         {
             InitializeComponent();
             this.words = words;
@@ -66,7 +69,7 @@ namespace WindowsFormsControlLibrary1
 
         private void update_Output()
         {
-          
+
 
         }
         private void ucTypingBoard_Load(object sender, EventArgs e)
@@ -78,9 +81,9 @@ namespace WindowsFormsControlLibrary1
         string current_world = "";
 
         public void ucTypingBoard_KeyDown(object sender, KeyEventArgs e)
-        {
+        { 
 
-            if(current_word_index >= words.Count)
+            if(current_word_index + 1 == words.Count && current_letter_index == words[words.Count-1].Length)
             {
                 return;
             }
@@ -97,13 +100,27 @@ namespace WindowsFormsControlLibrary1
         private bool Handle_Speachial_Inputs(KeyEventArgs e)
         {
 
-            if (e.KeyCode == Keys.Back)
+            if (e.KeyCode == Keys.Back && current_world != "")
             {
                 if (current_world.Length > 0)
                 {
-                    current_world = current_world.Substring(0, current_world.Length - 1);
-                    current_letter_index--;
+
                     current_total_letters_index--;
+
+
+                    if (current_world.Length <= words[current_word_index].Length)
+                    {
+                        current_letter_index--;
+                    }
+
+                    else
+                    {
+                        typing_Board.delete_char(current_total_letters_index);
+                        this.Focus();
+                    }
+
+
+                    current_world = current_world.Substring(0, current_world.Length - 1);
 
                     typing_Board.set_color((short)current_total_letters_index, colNoType);
 
@@ -111,6 +128,29 @@ namespace WindowsFormsControlLibrary1
                 }
 
                 return true;
+            }
+            else if (e.KeyCode == Keys.Back && current_world == "" && !isLastWordCorrect)
+            {
+
+                if (current_word_index <= 0)
+                    return false;
+
+                current_word_index--;
+
+                current_total_letters_index -= 1 ;
+                current_world = stk_WritedWords.Pop();
+                current_letter_index = (short) (current_world.Length-1);
+                if (current_word_index > 0)
+                {
+                    isLastWordCorrect = (stk_WritedWords.Peek() == words[current_word_index - 1]);
+                }
+                else
+                {
+                    isLastWordCorrect = false;
+                }
+
+                // this fix a bug that i do not know what is it
+                Handle_Speachial_Inputs(e);
             }
             else if(e.KeyCode == Keys.Space && current_world!= "")
             {
@@ -120,14 +160,24 @@ namespace WindowsFormsControlLibrary1
 
                     current_total_letters_index++;
 
+                    if(current_world == words[current_word_index])
+                    {
+                        isLastWordCorrect = true;
+                    }
+                    else
+                    {
+                        isLastWordCorrect = false;
+                    }
+
                 }
                 else
                 {
 
                     current_total_letters_index += (short) ((words[current_word_index].Length - current_world.Length)  + 1);
-
+                    isLastWordCorrect = false;
                 }
 
+                stk_WritedWords.Push(current_world);
                 current_world = "";
 
                 current_word_index++;
@@ -136,18 +186,25 @@ namespace WindowsFormsControlLibrary1
 
                 return true;
             }
+            
 
             return false;
         }
         private bool Update_TypeBoard(char ch)
         {
+            ch = (ch.ToString().ToLower())[0];
             // Note (Houdaifa) this must be deleted (replaced by inserting the wrong key)
-            if (current_world.Length > words[current_word_index].Length)
+            if (current_world.Length >= words[current_word_index].Length)
             {
 
+                current_world += ch;
+                typing_Board.insert_char(current_total_letters_index, ch, colTypedWrong);
+                current_total_letters_index++;
+                typing_Board.Select();
+
                // typing_Board.insert_char(current_total_letters_index, '@', Color.Blue);
-                //current_total_letters_index++;
-                //current_world += '@';
+               //current_total_letters_index++;
+               //current_world += '@';
                 return false;
 
             }
@@ -167,12 +224,12 @@ namespace WindowsFormsControlLibrary1
 
                 return true;
             }
-            else if (ch >= 'A' && ch <= 'Z')
+            else if (ch >= 'a' && ch <= 'z')
             {
-                current_world += (char)(ch + 32);
+                current_world += (char)(ch);
 
 
-                color_letter((char)(ch + 32));
+                color_letter((char)(ch));
 
                 current_letter_index++;
 
@@ -211,6 +268,7 @@ namespace WindowsFormsControlLibrary1
 
         private void ucColoredLabel1_Load(object sender, EventArgs e)
         {
+            
         }
 
 
@@ -225,5 +283,13 @@ namespace WindowsFormsControlLibrary1
         Color colNoType = Color.Gray;
         Color colTypedCorrect = Color.FromArgb(230, 230, 230);
         Color colTypedWrong = Color.Red;
+
+        bool isLastWordCorrect = false;
+
+        Stack<string> stk_WritedWords = new Stack<string>();
+        private void typing_Board_Click(object sender, EventArgs e)
+        {
+            this.Focus();
+        }
     }
 }

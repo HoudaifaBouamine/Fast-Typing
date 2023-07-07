@@ -41,6 +41,7 @@
             this.typing_Board.Size = new System.Drawing.Size(746, 224);
             this.typing_Board.TabIndex = 1;
             this.typing_Board.Load += new System.EventHandler(this.ucColoredLabel1_Load);
+            this.typing_Board.Click += new System.EventHandler(this.typing_Board_Click);
             this.typing_Board.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ucTypingBoard_KeyDown);
             // 
             // ucTypingBoard
@@ -55,6 +56,7 @@
             this.Name = "ucTypingBoard";
             this.Size = new System.Drawing.Size(1166, 342);
             this.Load += new System.EventHandler(this.ucTypingBoard_Load);
+            this.Click += new System.EventHandler(this.typing_Board_Click);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ucTypingBoard_KeyDown);
             this.ResumeLayout(false);
 
