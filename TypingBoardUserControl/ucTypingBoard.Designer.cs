@@ -28,11 +28,39 @@
         /// </summary>
         private void InitializeComponent()
         {
-            components = new System.ComponentModel.Container();
+            this.typing_Board = new ColoredLable.ucColoredLabel();
+            this.SuspendLayout();
+            // 
+            // typing_Board
+            // 
+            this.typing_Board.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.typing_Board.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.typing_Board.Location = new System.Drawing.Point(42, 42);
+            this.typing_Board.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.typing_Board.Name = "typing_Board";
+            this.typing_Board.Size = new System.Drawing.Size(746, 224);
+            this.typing_Board.TabIndex = 1;
+            this.typing_Board.Load += new System.EventHandler(this.ucColoredLabel1_Load);
+            this.typing_Board.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ucTypingBoard_KeyDown);
+            // 
+            // ucTypingBoard
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 28F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.Controls.Add(this.typing_Board);
+            this.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(206)))), ((int)(((byte)(206)))));
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.Name = "ucTypingBoard";
+            this.Size = new System.Drawing.Size(1166, 342);
+            this.Load += new System.EventHandler(this.ucTypingBoard_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ucTypingBoard_KeyDown);
+            this.ResumeLayout(false);
+
         }
 
         #endregion
+        private ColoredLable.ucColoredLabel typing_Board;
     }
 }

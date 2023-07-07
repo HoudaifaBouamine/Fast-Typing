@@ -4,3 +4,13 @@ C:\Users\admin\Desktop\git\FastTyping\WindowsFormsControlLibrary1\obj\Debug\Typi
 C:\Users\admin\Desktop\git\FastTyping\WindowsFormsControlLibrary1\obj\Debug\TypingBoard.csproj.CoreCompileInputs.cache
 C:\Users\admin\Desktop\git\FastTyping\WindowsFormsControlLibrary1\obj\Debug\WindowsFormsControlLibrary1.dll
 C:\Users\admin\Desktop\git\FastTyping\WindowsFormsControlLibrary1\obj\Debug\WindowsFormsControlLibrary1.pdb
+C:\Users\admin\Desktop\git\FastTyping\TypingBoardUserControl\bin\Debug\WindowsFormsControlLibrary1.dll
+C:\Users\admin\Desktop\git\FastTyping\TypingBoardUserControl\bin\Debug\WindowsFormsControlLibrary1.pdb
+C:\Users\admin\Desktop\git\FastTyping\TypingBoardUserControl\obj\Debug\TypingBoard.csproj.AssemblyReference.cache
+C:\Users\admin\Desktop\git\FastTyping\TypingBoardUserControl\obj\Debug\WindowsFormsControlLibrary1.ucTypingBoard.resources
+C:\Users\admin\Desktop\git\FastTyping\TypingBoardUserControl\obj\Debug\TypingBoard.csproj.GenerateResource.cache
+C:\Users\admin\Desktop\git\FastTyping\TypingBoardUserControl\obj\Debug\TypingBoard.csproj.CoreCompileInputs.cache
+C:\Users\admin\Desktop\git\FastTyping\TypingBoardUserControl\obj\Debug\WindowsFormsControlLibrary1.dll
+C:\Users\admin\Desktop\git\FastTyping\TypingBoardUserControl\obj\Debug\WindowsFormsControlLibrary1.pdb
+C:\Users\admin\Desktop\git\FastTyping\TypingBoardUserControl\bin\Debug\ColoredLable.dll
+C:\Users\admin\Desktop\git\FastTyping\TypingBoardUserControl\obj\Debug\TypingBoard.csproj.CopyComplete
