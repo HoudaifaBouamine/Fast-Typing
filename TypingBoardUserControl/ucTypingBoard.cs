@@ -139,7 +139,7 @@ namespace WindowsFormsControlLibrary1
 
                 current_total_letters_index -= 1 ;
                 current_world = stk_WritedWords.Pop();
-                current_letter_index = (short) (current_world.Length-1);
+                current_letter_index = (short) (current_world.Length);
                 if (current_word_index > 0)
                 {
                     isLastWordCorrect = (stk_WritedWords.Peek() == words[current_word_index - 1]);
