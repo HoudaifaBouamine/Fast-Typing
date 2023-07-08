@@ -26,7 +26,7 @@ namespace WindowsFormsControlLibrary1
 
         string text = "";
         string input = "";
-        string current_word;
+        string current_word = "";
 
         Color  colNoType = Color.Gray;
         Color  colCorrectType = Color.FromArgb(220,220,220);
@@ -72,44 +72,121 @@ namespace WindowsFormsControlLibrary1
         }
         private void typing_Board_KeyDown(object sender, KeyEventArgs e)
         {
-            read_char(e);
 
-            handle_speachal_input(e);
+            if (!handle_additanal_inputs(e))
+            {
 
+
+                if (!read_char_in_valid_range(e))
+                {
+                    if (!handle_speachal_input(e))
+                    {
+
+                    }
+                }
+
+            }
             label1.Text = input;
-
             label2.Text = current_word;
             label3.Text = iCurrent_word_index.ToString();
             label4.Text = words[iCurrent_word_index];
+
+            this.Select();
+            this.Focus();
         }
 
-        private void read_char(KeyEventArgs e)
+        private bool handle_additanal_inputs(KeyEventArgs e)
+        {
+            if(current_word.Length + 1 >= words[iCurrent_word_index].Length && char.IsLetterOrDigit((char)e.KeyValue))
+            {
+                typing_Board.insert_char((short)(current_word.Length), (char)(e.KeyValue), Color.Blue);
+                current_word += (char)(e.KeyValue);
+                input += (char)(e.KeyValue);
+
+                return true;
+            }
+            else if (current_word.Length >= words[iCurrent_word_index].Length && e.KeyCode == Keys.Back && current_word[current_word.Length-1] != ' ')
+            {
+
+                current_word = current_word.Remove(current_word.Length - 1, 1);
+                input = input.Remove(input.Length - 1, 1);
+
+                typing_Board.delete_char((short)current_word.Length);
+                if (current_word.Length >= words[iCurrent_word_index].Length)
+                {
+
+                    return true;
+                }
+                else
+                {
+                    //current_word+= " ";
+
+                    return true;
+                }
+
+            }
+            else if(current_word.Length >= words[iCurrent_word_index].Length && (e.KeyCode == Keys.Space))
+            {
+                input += " ";
+
+                
+
+                
+                iRealTextIndex += (current_word.Length-words[iCurrent_word_index].Length + 1);
+                iWritingTextIndex += (current_word.Length-words[iCurrent_word_index].Length+1);
+                writed_words.Push(current_word);
+                current_word = "";
+                iCurrent_word_index++;
+
+
+                return true;
+            }
+
+
+            return false;
+        }
+        private bool read_char_in_valid_range(KeyEventArgs e)
         {
 
-            if (char.IsLetter((char)e.KeyValue) && isCapsLock())
-            {
-                add_new_Char((char)(e.KeyValue));
-            }
-            if (char.IsLetter((char)e.KeyValue) && !isCapsLock())
-            {
-                add_new_Char((char)(e.KeyValue + 32));
-            }
-            else if(char.IsDigit((char)e.KeyValue))
-            {
+            if (current_word.Length <= words[iCurrent_word_index].Length) {
 
-                add_new_Char((char)e.KeyValue);
+                if (char.IsLetter((char)e.KeyValue) && isCapsLock())
+                {
+                    add_new_Char((char)(e.KeyValue));
+                    return true;
+                }
+                else if (char.IsLetter((char)e.KeyValue) && !isCapsLock())
+                {
+                    add_new_Char((char)(e.KeyValue + 32));
+                    return true;
+                }
+                else if (char.IsDigit((char)e.KeyValue))
+                {
+
+                    add_new_Char((char)e.KeyValue);
+                    return true;
+
+
+                }
+                else if (char.IsPunctuation((char)e.KeyValue))
+                {
+                    add_new_Char((char)e.KeyValue);
+                    return true;
+
+                }
+                else if (e.KeyValue == 190)
+                {
+                    add_new_Char('.');
+                    return true;
+
+                }
+
+
 
 
             }
-            else if(char.IsPunctuation((char)e.KeyValue) )
-            {
-                add_new_Char((char)e.KeyValue);
+            return false;
 
-            }
-            else if (e.KeyValue == 190)
-            {
-                add_new_Char('.');
-            }
             void add_new_Char(char ch1)
             {
                 input += ch1;
@@ -136,9 +213,8 @@ namespace WindowsFormsControlLibrary1
                 }
 
             }
-
         }
-        private void handle_speachal_input(KeyEventArgs e)
+        private bool handle_speachal_input(KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Back)
             {
@@ -156,7 +232,9 @@ namespace WindowsFormsControlLibrary1
                     if (iWritingTextIndex > 0)
                         iWritingTextIndex--;
 
-                 
+                    return true;
+
+
                 }
                 else if (iCurrent_word_index != 0)
                 {
@@ -194,6 +272,9 @@ namespace WindowsFormsControlLibrary1
                     if (iCurrent_word_index > 0)
 
                         iCurrent_word_index--;
+
+                    return true;
+
                 }
 
             }
@@ -208,6 +289,7 @@ namespace WindowsFormsControlLibrary1
                     writed_words.Push(current_word);
                     current_word = "";
 
+                    return true;
 
                 }
                 else
@@ -226,12 +308,16 @@ namespace WindowsFormsControlLibrary1
                     current_word = "";
                     iCurrent_word_index++;
 
+                    return true;
+
                 }
 
 
 
 
             }
+
+            return false;
 
             string get_spaces(int count)
             {
@@ -243,6 +329,8 @@ namespace WindowsFormsControlLibrary1
 
                 return spaces;
             }
+
+
 
         }
 
