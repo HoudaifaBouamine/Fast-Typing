@@ -16,33 +16,46 @@ namespace WindowsFormsControlLibrary1
         public ucTypingBoard()
         {
             InitializeComponent();
-
+            this.typing_Board.Font = this.Font;
             typing_Board.clear();
-            text = "dad houdaifa bouamine hi wow";
-            typing_Board.add_string(text, colNoType);
+
+            set("houdaifa bouamine @ gmail . com");
         }
 
         string text = "";
         string input = "";
 
 
-        Color colNoType = Color.Gray;
-        Color colCorrectType = Color.FromArgb(220,220,220);
-        Color colWrongType = Color.Red;
+        Color  colNoType = Color.Gray;
+        Color  colCorrectType = Color.FromArgb(220,220,220);
+        Color  colWrongType = Color.Red;
 
 
-        int iRealTextIndex    = 0;
-        int iWritingTextIndex = 0;
+        int    iRealTextIndex    = 0;
+        int    iWritingTextIndex = 0;
+
+        public void set(string new_text)
+        {
+            clear();
+            text = new_text;
+            typing_Board.add_string(text, colNoType);
+        }
+        public void clear()
+        {
+            typing_Board.clear();
+
+            text = "";
+            input = "";
 
 
-
+            iRealTextIndex = 0;
+            iWritingTextIndex = 0;
+        }
         private void typing_Board_KeyDown(object sender, KeyEventArgs e)
         {
             read_char((char)e.KeyValue);
 
             handle_speachal_input(e);
-
-            label1.Text = input;
         }
 
         private void read_char(char ch)

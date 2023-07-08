@@ -35,7 +35,7 @@
             // 
             this.typing_Board.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
             this.typing_Board.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.typing_Board.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.typing_Board.Font = new System.Drawing.Font("Segoe UI Semibold", 16F, System.Drawing.FontStyle.Bold);
             this.typing_Board.Location = new System.Drawing.Point(0, 0);
             this.typing_Board.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.typing_Board.Name = "typing_Board";

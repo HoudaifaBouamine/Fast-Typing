@@ -9,3 +9,4 @@ C:\Users\admin\Desktop\git\FastTyping\obj\Debug\FastTyping.csproj.GenerateResour
 C:\Users\admin\Desktop\git\FastTyping\obj\Debug\FastTyping.csproj.CoreCompileInputs.cache
 C:\Users\admin\Desktop\git\FastTyping\obj\Debug\FastTyping.exe
 C:\Users\admin\Desktop\git\FastTyping\obj\Debug\FastTyping.pdb
+C:\Users\admin\Desktop\git\FastTyping\obj\Debug\FastTyping.csproj.CopyComplete
