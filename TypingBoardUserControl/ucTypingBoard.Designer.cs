@@ -28,30 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.typing_Board = new ColoredLable.ucColoredLabel();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
+            this.typing_Board = new ColoredLable.ucColoredLabel();
             this.SuspendLayout();
-            // 
-            // typing_Board
-            // 
-            this.typing_Board.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
-            this.typing_Board.Dock = System.Windows.Forms.DockStyle.Top;
-            this.typing_Board.Font = new System.Drawing.Font("Segoe UI Semibold", 16F, System.Drawing.FontStyle.Bold);
-            this.typing_Board.Location = new System.Drawing.Point(0, 0);
-            this.typing_Board.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.typing_Board.Name = "typing_Board";
-            this.typing_Board.Size = new System.Drawing.Size(968, 115);
-            this.typing_Board.TabIndex = 1;
-            this.typing_Board.KeyDown += new System.Windows.Forms.KeyEventHandler(this.typing_Board_KeyDown);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 70);
+            this.label1.Location = new System.Drawing.Point(23, 114);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(0, 28);
             this.label1.TabIndex = 2;
@@ -92,17 +80,28 @@
             this.label5.TabIndex = 6;
             this.label5.Text = "label5";
             // 
+            // typing_Board
+            // 
+            this.typing_Board.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.typing_Board.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.typing_Board.Location = new System.Drawing.Point(30, 18);
+            this.typing_Board.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.typing_Board.Name = "typing_Board";
+            this.typing_Board.Size = new System.Drawing.Size(940, 105);
+            this.typing_Board.TabIndex = 7;
+            this.typing_Board.KeyDown += new System.Windows.Forms.KeyEventHandler(this.typing_Board_KeyDown);
+            // 
             // ucTypingBoard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 28F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.Controls.Add(this.typing_Board);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.typing_Board);
             this.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(206)))), ((int)(((byte)(206)))));
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -116,11 +115,11 @@
         }
 
         #endregion
-        private ColoredLable.ucColoredLabel typing_Board;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
+        private ColoredLable.ucColoredLabel typing_Board;
     }
 }

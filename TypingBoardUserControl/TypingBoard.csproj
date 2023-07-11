@@ -31,7 +31,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="ColoredLable">
-      <HintPath>..\bin\Debug\ColoredLable.dll</HintPath>
+      <HintPath>..\..\ColoredLable\bin\Debug\ColoredLable.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />

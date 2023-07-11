@@ -19,9 +19,11 @@ namespace WindowsFormsControlLibrary1
             InitializeComponent();
             this.typing_Board.Font = this.Font;
             typing_Board.clear();
+            set("dad com");
+            typing_Board.set_tracing_index(0);
 
-            set("houdaifa bouamine @ gmail . com");
-            
+            this.Select();
+
         }
 
         string text = "";
@@ -48,20 +50,30 @@ namespace WindowsFormsControlLibrary1
         }
         public void set(string new_text)
         {
-            clear();
+            clear_board();
             text = new_text;
             typing_Board.add_string(new_text, colNoType);
 
             words = new_text.Split(' ');
-            
-            for(int i = 0; i <  words.Length; i++)
+
+            for (int i = 0; i < words.Length; i++)
             {
-                words[i] += ' ';
+                    words[i] += ' ';
+                
             }
+
         }
-        public void clear()
+
+
+        void clear_board()
         {
             typing_Board.clear();
+        }
+
+
+        public void clear()
+        {
+            //typing_Board.clear();
 
             text = "";
             input = "";
@@ -70,8 +82,12 @@ namespace WindowsFormsControlLibrary1
             iRealTextIndex = 0;
             iWritingTextIndex = 0;
         }
+
+        bool stop = false;
         private void typing_Board_KeyDown(object sender, KeyEventArgs e)
         {
+            if(stop) return;
+         
 
             if (!handle_additanal_inputs(e))
             {
@@ -86,20 +102,50 @@ namespace WindowsFormsControlLibrary1
                 }
 
             }
+
+            typing_Board.set_tracing_index(input.Length);
+
+
             label1.Text = input;
             label2.Text = current_word;
             label3.Text = iCurrent_word_index.ToString();
-            label4.Text = words[iCurrent_word_index];
+            label4.Text = iRealTextIndex.ToString();
+
+            if (current_word.Length + 1== words[words.Length - 1].Length && iCurrent_word_index == words.Length - 1)
+            {
+                label5.Text = "wow";
+                stop = true;
+                isFull = true;
+                typing_Board.add_char(' ');
+                typing_Board.set_tracing_index(input.Length);
+
+                // End Screen Here
+            }
 
             this.Select();
             this.Focus();
         }
 
+
+        public bool isFull = false;
         private bool handle_additanal_inputs(KeyEventArgs e)
         {
-            if(current_word.Length + 1 >= words[iCurrent_word_index].Length && char.IsLetterOrDigit((char)e.KeyValue))
+ 
+
+            if(current_word.Length + 1 >= words[iCurrent_word_index].Length && char.IsLetterOrDigit((char)e.KeyValue) )
             {
-                typing_Board.insert_char((short)(current_word.Length), (char)(e.KeyValue), Color.Blue);
+
+                char tmp = (char) e.KeyValue;
+
+                if(char.IsLetter(tmp) && !isCapsLock())
+                {
+                    tmp = (char)(e.KeyValue + 32);
+                }
+
+
+                typing_Board.insert_char((short)(input.Length), tmp, colWrongType);
+
+
                 current_word += (char)(e.KeyValue);
                 input += (char)(e.KeyValue);
 
@@ -110,22 +156,13 @@ namespace WindowsFormsControlLibrary1
 
                 current_word = current_word.Remove(current_word.Length - 1, 1);
                 input = input.Remove(input.Length - 1, 1);
+                typing_Board.delete_char((short)input.Length);
 
-                typing_Board.delete_char((short)current_word.Length);
-                if (current_word.Length >= words[iCurrent_word_index].Length)
-                {
 
-                    return true;
-                }
-                else
-                {
-                    //current_word+= " ";
-
-                    return true;
-                }
+                return true;
 
             }
-            else if(current_word.Length >= words[iCurrent_word_index].Length && (e.KeyCode == Keys.Space))
+            else if(current_word.Length  >= words[iCurrent_word_index].Length && (e.KeyCode == Keys.Space))
             {
                 input += " ";
 
@@ -270,10 +307,11 @@ namespace WindowsFormsControlLibrary1
                         iWritingTextIndex--;
 
                     if (iCurrent_word_index > 0)
-
                         iCurrent_word_index--;
 
-                    return true;
+
+
+                    return handle_speachal_input(e);
 
                 }
 
@@ -345,7 +383,16 @@ namespace WindowsFormsControlLibrary1
 
         private void ucTypingBoard_Load(object sender, EventArgs e)
         {
+
             this.Select();
+            this.Focus();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+          //  typing_Board.set_tracing_index(3);
+        }
+
+
     }
 }
