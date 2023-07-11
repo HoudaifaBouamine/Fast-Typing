@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Reflection.Emit;
 using System.Runtime.InteropServices;
+using ColoredLable;
 
 namespace WindowsFormsControlLibrary1
 {
@@ -19,7 +20,7 @@ namespace WindowsFormsControlLibrary1
             InitializeComponent();
             this.typing_Board.Font = this.Font;
             typing_Board.clear();
-            set("dad com");
+            set("houdaifa bouamine dad com");
             typing_Board.set_tracing_index(0);
 
             this.Select();
@@ -30,23 +31,23 @@ namespace WindowsFormsControlLibrary1
         string input = "";
         string current_word = "";
 
-        Color  colNoType = Color.Gray;
-        Color  colCorrectType = Color.FromArgb(220,220,220);
-        Color  colWrongType = Color.Red;
+        Color colNoType = Color.Gray;
+        Color colCorrectType = Color.FromArgb(220, 220, 220);
+        Color colWrongType = Color.Red;
 
         string[] words;
         Stack<string> writed_words = new Stack<string>();
 
 
-        int iRealTextIndex    = 0;
+        int iRealTextIndex = 0;
         int iWritingTextIndex = 0;
-        int iCurrent_word_index= 0;
+        int iCurrent_word_index = 0;
 
         public void add(string new_word)
         {
             typing_Board.add_string(new_word + " ", colNoType);
 
-            
+
         }
         public void set(string new_text)
         {
@@ -58,8 +59,8 @@ namespace WindowsFormsControlLibrary1
 
             for (int i = 0; i < words.Length; i++)
             {
-                    words[i] += ' ';
-                
+                words[i] += ' ';
+
             }
 
         }
@@ -83,11 +84,50 @@ namespace WindowsFormsControlLibrary1
             iWritingTextIndex = 0;
         }
 
+        public void refreach()
+        {
+
+
+            System.Windows.Forms.Label lbl = typing_Board.tracer;
+
+            List<character> list = new List<character>();
+            foreach (Control control in typing_Board.Controls)
+            {
+                if (control is System.Windows.Forms.Label && control != lbl)
+                {
+                    list.Add(new character(control.Text[0], control.ForeColor));
+                }
+            }
+
+            typing_Board.Controls.Clear();
+            typing_Board.lables_clear();
+            typing_Board.Controls.Add(lbl);
+
+            foreach(character character in list)
+            {
+                typing_Board.add_char(character.ch, character.col);
+            }
+
+        }
+
+        struct character
+        {
+            public 
+            char ch;
+            public Color col;
+
+            public character(char ch,Color col)
+            {
+                this.ch = ch;
+                this.col = col;
+            }
+        }
+
         bool stop = false;
         private void typing_Board_KeyDown(object sender, KeyEventArgs e)
         {
             if(stop) return;
-         
+
 
             if (!handle_additanal_inputs(e))
             {
@@ -99,8 +139,15 @@ namespace WindowsFormsControlLibrary1
                     {
 
                     }
+                    else
+                    {
+                    }
                 }
 
+            }
+            else
+            {
+            
             }
 
             typing_Board.set_tracing_index(input.Length);
@@ -135,6 +182,10 @@ namespace WindowsFormsControlLibrary1
             if(current_word.Length + 1 >= words[iCurrent_word_index].Length && char.IsLetterOrDigit((char)e.KeyValue) )
             {
 
+                return true;
+
+                // canceled
+
                 char tmp = (char) e.KeyValue;
 
                 if(char.IsLetter(tmp) && !isCapsLock())
@@ -144,7 +195,7 @@ namespace WindowsFormsControlLibrary1
 
 
                 typing_Board.insert_char((short)(input.Length), tmp, colWrongType);
-
+                
 
                 current_word += (char)(e.KeyValue);
                 input += (char)(e.KeyValue);
@@ -153,7 +204,9 @@ namespace WindowsFormsControlLibrary1
             }
             else if (current_word.Length >= words[iCurrent_word_index].Length && e.KeyCode == Keys.Back && current_word[current_word.Length-1] != ' ')
             {
+                return true;
 
+                // canceled
                 current_word = current_word.Remove(current_word.Length - 1, 1);
                 input = input.Remove(input.Length - 1, 1);
                 typing_Board.delete_char((short)input.Length);
@@ -393,6 +446,10 @@ namespace WindowsFormsControlLibrary1
           //  typing_Board.set_tracing_index(3);
         }
 
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            refreach();
+        }
 
     }
 }
