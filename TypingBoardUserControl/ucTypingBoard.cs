@@ -20,28 +20,38 @@ namespace WindowsFormsControlLibrary1
             InitializeComponent();
             this.typing_Board.Font = this.Font;
             typing_Board.clear();
-            set("houdaifa bouamine dad com");
+            set("");
             typing_Board.set_tracing_index(0);
 
             this.Select();
 
         }
 
-        string text = "";
-        string input = "";
-        string current_word = "";
+        public ucTypingBoard(string text)
+        {
+            InitializeComponent();
+            this.typing_Board.Font = this.Font;
+            typing_Board.clear();
+            set(text);
+            typing_Board.set_tracing_index(0);
 
-        Color colNoType = Color.Gray;
-        Color colCorrectType = Color.FromArgb(220, 220, 220);
-        Color colWrongType = Color.Red;
+            this.Select();
 
-        string[] words;
-        Stack<string> writed_words = new Stack<string>();
+        }
+
+        public string text = "";
+        public string input = "";
+        public string current_word = "";
+        public Color colNoType = Color.Gray;
+        public Color colCorrectType = Color.FromArgb(220, 220, 220);
+        public Color colWrongType = Color.Red;
+        public string[] words;
+        public Stack<string> writed_words = new Stack<string>();
 
 
-        int iRealTextIndex = 0;
-        int iWritingTextIndex = 0;
-        int iCurrent_word_index = 0;
+        public int iRealTextIndex = 0;
+        public int iWritingTextIndex = 0;
+        public int iCurrent_word_index = 0;
 
         public void add(string new_word)
         {
@@ -63,8 +73,13 @@ namespace WindowsFormsControlLibrary1
 
             }
 
+            typing_Board.set_tracing_index(0);
         }
 
+        public void set_tracer(int index)
+        {
+            typing_Board.set_tracing_index(index);
+        }
 
         void clear_board()
         {
@@ -123,10 +138,11 @@ namespace WindowsFormsControlLibrary1
             }
         }
 
-        bool stop = false;
-        private void typing_Board_KeyDown(object sender, KeyEventArgs e)
+        bool stop       = false ;
+        public bool isRunning  = false ;
+        public void typing_Board_KeyDown(object sender, KeyEventArgs e)
         {
-            if(stop) return;
+            if(stop) return ;
 
 
             if (!handle_additanal_inputs(e))
@@ -150,29 +166,28 @@ namespace WindowsFormsControlLibrary1
             
             }
 
-            typing_Board.set_tracing_index(input.Length);
+            typing_Board.set_tracing_index_with_animation(input.Length);
 
 
-            label1.Text = input;
-            label2.Text = current_word;
-            label3.Text = iCurrent_word_index.ToString();
-            label4.Text = iRealTextIndex.ToString();
-
+    
             if (current_word.Length + 1== words[words.Length - 1].Length && iCurrent_word_index == words.Length - 1)
             {
-                label5.Text = "wow";
                 stop = true;
                 isFull = true;
                 typing_Board.add_char(' ');
-                typing_Board.set_tracing_index(input.Length);
+                typing_Board.set_tracing_index_with_animation(input.Length);
 
                 // End Screen Here
             }
 
             this.Select();
             this.Focus();
-        }
 
+            if (!isRunning)
+            {
+                isRunning = true;
+            }
+        }
 
         public bool isFull = false;
         private bool handle_additanal_inputs(KeyEventArgs e)
@@ -450,6 +465,17 @@ namespace WindowsFormsControlLibrary1
         {
             refreach();
         }
+
+        private void typing_Board_FontChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ucTypingBoard_FontChanged(object sender, EventArgs e)
+        {
+            this.typing_Board.Font = this.Font;
+        }
+
 
     }
 }
