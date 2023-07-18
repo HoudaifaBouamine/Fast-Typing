@@ -49,9 +49,10 @@
             this.label3 = new System.Windows.Forms.Label();
             this.lbl_wpm = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.Graph = new ucGraphDrawer.usGraph();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -60,6 +61,7 @@
             // 
             // timer_WPS
             // 
+            this.timer_WPS.Interval = 1000;
             this.timer_WPS.Tick += new System.EventHandler(this.timer_WPS_Tick);
             // 
             // lbl_time_left
@@ -67,16 +69,16 @@
             this.lbl_time_left.AutoSize = true;
             this.lbl_time_left.Font = new System.Drawing.Font("Segoe UI Semibold", 16.2F, System.Drawing.FontStyle.Bold);
             this.lbl_time_left.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(171)))), ((int)(((byte)(23)))));
-            this.lbl_time_left.Location = new System.Drawing.Point(117, 45);
+            this.lbl_time_left.Location = new System.Drawing.Point(89, 45);
             this.lbl_time_left.Name = "lbl_time_left";
-            this.lbl_time_left.Size = new System.Drawing.Size(88, 38);
+            this.lbl_time_left.Size = new System.Drawing.Size(49, 38);
             this.lbl_time_left.TabIndex = 1;
-            this.lbl_time_left.Text = "00:00";
+            this.lbl_time_left.Text = "30";
             // 
             // btn_Start_Or_Reset
             // 
             this.btn_Start_Or_Reset.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_Start_Or_Reset.Location = new System.Drawing.Point(567, 339);
+            this.btn_Start_Or_Reset.Location = new System.Drawing.Point(549, 366);
             this.btn_Start_Or_Reset.Name = "btn_Start_Or_Reset";
             this.btn_Start_Or_Reset.Size = new System.Drawing.Size(145, 58);
             this.btn_Start_Or_Reset.TabIndex = 2;
@@ -93,9 +95,9 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(52)))), ((int)(((byte)(55)))));
+            this.panel1.Controls.Add(this.typingBoard);
             this.panel1.Controls.Add(this.btn_Start_Or_Reset);
             this.panel1.Controls.Add(this.lbl_time_left);
-            this.panel1.Controls.Add(this.typingBoard);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel1.Location = new System.Drawing.Point(0, 109);
             this.panel1.Name = "panel1";
@@ -104,19 +106,20 @@
             // 
             // typingBoard
             // 
-            this.typingBoard.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(52)))), ((int)(((byte)(55)))));
-            this.typingBoard.Font = new System.Drawing.Font("Segoe UI Semibold", 15F, System.Drawing.FontStyle.Bold);
+            this.typingBoard.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.typingBoard.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.typingBoard.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(206)))), ((int)(((byte)(206)))));
-            this.typingBoard.Location = new System.Drawing.Point(111, 80);
-            this.typingBoard.Margin = new System.Windows.Forms.Padding(6, 11, 6, 11);
+            this.typingBoard.Location = new System.Drawing.Point(96, 88);
+            this.typingBoard.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.typingBoard.Name = "typingBoard";
-            this.typingBoard.Size = new System.Drawing.Size(1083, 217);
-            this.typingBoard.TabIndex = 0;
-            this.typingBoard.Load += new System.EventHandler(this.ucTypingBoard1_Load);
+            this.typingBoard.Size = new System.Drawing.Size(1056, 270);
+            this.typingBoard.TabIndex = 3;
+            this.typingBoard.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
             // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(52)))), ((int)(((byte)(55)))));
+            this.panel2.Controls.Add(this.Graph);
             this.panel2.Controls.Add(this.label11);
             this.panel2.Controls.Add(this.lbl_time);
             this.panel2.Controls.Add(this.label9);
@@ -279,6 +282,16 @@
             this.panel3.Size = new System.Drawing.Size(1292, 111);
             this.panel3.TabIndex = 4;
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackgroundImage = global::FastTyping.Properties.Resources.img_logo;
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pictureBox1.Location = new System.Drawing.Point(80, 29);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(60, 40);
+            this.pictureBox1.TabIndex = 4;
+            this.pictureBox1.TabStop = false;
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -290,15 +303,15 @@
             this.label1.TabIndex = 3;
             this.label1.Text = "FastTyping";
             // 
-            // pictureBox1
+            // Graph
             // 
-            this.pictureBox1.BackgroundImage = global::FastTyping.Properties.Resources.img_logo;
-            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pictureBox1.Location = new System.Drawing.Point(80, 29);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(60, 40);
-            this.pictureBox1.TabIndex = 4;
-            this.pictureBox1.TabStop = false;
+            this.Graph.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(52)))), ((int)(((byte)(55)))));
+            this.Graph.Font = new System.Drawing.Font("Segoe UI Semibold", 12.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Graph.Location = new System.Drawing.Point(262, 82);
+            this.Graph.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.Graph.Name = "Graph";
+            this.Graph.Size = new System.Drawing.Size(981, 232);
+            this.Graph.TabIndex = 13;
             // 
             // Form1
             // 
@@ -306,9 +319,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
             this.ClientSize = new System.Drawing.Size(1292, 682);
-            this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
+            this.Controls.Add(this.panel3);
             this.Font = new System.Drawing.Font("Segoe UI Semibold", 12.2F, System.Drawing.FontStyle.Bold);
             this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(206)))), ((int)(((byte)(206)))));
             this.Margin = new System.Windows.Forms.Padding(6);
@@ -327,8 +340,6 @@
         }
 
         #endregion
-
-        private WindowsFormsControlLibrary1.ucTypingBoard typingBoard;
         private System.Windows.Forms.Timer timer_WPS;
         private System.Windows.Forms.Label lbl_time_left;
         private System.Windows.Forms.Button btn_Start_Or_Reset;
@@ -351,6 +362,8 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Timer timer1;
+        private WindowsFormsControlLibrary1.ucTypingBoard typingBoard;
+        private ucGraphDrawer.usGraph Graph;
     }
 }
 

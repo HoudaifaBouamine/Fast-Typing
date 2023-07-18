@@ -48,6 +48,8 @@ namespace WindowsFormsControlLibrary1
         public string[] words;
         public Stack<string> writed_words = new Stack<string>();
 
+        public int cpt_CorrectChar = 0;
+        public int cpt_WrongChar = 0;
 
         public int iRealTextIndex = 0;
         public int iWritingTextIndex = 0;
@@ -94,7 +96,8 @@ namespace WindowsFormsControlLibrary1
             text = "";
             input = "";
 
-
+            cpt_WrongChar = 0;
+            cpt_CorrectChar = 0;
             iRealTextIndex = 0;
             iWritingTextIndex = 0;
         }
@@ -147,8 +150,6 @@ namespace WindowsFormsControlLibrary1
 
             if (!handle_additanal_inputs(e))
             {
-
-
                 if (!read_char_in_valid_range(e))
                 {
                     if (!handle_speachal_input(e))
@@ -292,6 +293,8 @@ namespace WindowsFormsControlLibrary1
             }
             return false;
 
+
+
             void add_new_Char(char ch1)
             {
                 input += ch1;
@@ -304,11 +307,13 @@ namespace WindowsFormsControlLibrary1
                     {
 
                         typing_Board.set_color((short)(input.Length - 1), colCorrectType);
+                        cpt_CorrectChar++;
 
                     }
                     else
                     {
                         typing_Board.set_color((short)(input.Length - 1), colWrongType);
+                        cpt_WrongChar++;
 
                     }
                     iRealTextIndex++;

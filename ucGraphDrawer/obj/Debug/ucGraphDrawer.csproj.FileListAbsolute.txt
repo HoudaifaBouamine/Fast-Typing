@@ -1,0 +1,16 @@
+C:\Users\admin\Desktop\ucGraphDrawer\bin\Debug\ucGraphDrawer.dll
+C:\Users\admin\Desktop\ucGraphDrawer\bin\Debug\ucGraphDrawer.pdb
+C:\Users\admin\Desktop\ucGraphDrawer\obj\Debug\ucGraphDrawer.csproj.AssemblyReference.cache
+C:\Users\admin\Desktop\ucGraphDrawer\obj\Debug\ucGraphDrawer.usGraph.resources
+C:\Users\admin\Desktop\ucGraphDrawer\obj\Debug\ucGraphDrawer.csproj.GenerateResource.cache
+C:\Users\admin\Desktop\ucGraphDrawer\obj\Debug\ucGraphDrawer.csproj.CoreCompileInputs.cache
+C:\Users\admin\Desktop\ucGraphDrawer\obj\Debug\ucGraphDrawer.dll
+C:\Users\admin\Desktop\ucGraphDrawer\obj\Debug\ucGraphDrawer.pdb
+C:\Users\admin\Desktop\git\FastTyping\ucGraphDrawer\bin\Debug\ucGraphDrawer.dll
+C:\Users\admin\Desktop\git\FastTyping\ucGraphDrawer\bin\Debug\ucGraphDrawer.pdb
+C:\Users\admin\Desktop\git\FastTyping\ucGraphDrawer\obj\Debug\ucGraphDrawer.csproj.AssemblyReference.cache
+C:\Users\admin\Desktop\git\FastTyping\ucGraphDrawer\obj\Debug\ucGraphDrawer.usGraph.resources
+C:\Users\admin\Desktop\git\FastTyping\ucGraphDrawer\obj\Debug\ucGraphDrawer.csproj.GenerateResource.cache
+C:\Users\admin\Desktop\git\FastTyping\ucGraphDrawer\obj\Debug\ucGraphDrawer.csproj.CoreCompileInputs.cache
+C:\Users\admin\Desktop\git\FastTyping\ucGraphDrawer\obj\Debug\ucGraphDrawer.dll
+C:\Users\admin\Desktop\git\FastTyping\ucGraphDrawer\obj\Debug\ucGraphDrawer.pdb
