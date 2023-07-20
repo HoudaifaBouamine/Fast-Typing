@@ -24,6 +24,7 @@ namespace ucGraphDrawer
         float step_size_y;
         int number_of_steps_for_unit_x;
         int number_of_steps_for_unit_y;
+        float tmp_step;
         List<float> list_y;
 
         private void usGraph_Load(object sender, EventArgs e)
@@ -59,7 +60,9 @@ namespace ucGraphDrawer
         {
             float ratio  = (float)pictureBox1.Height / (float) list_y.Max();
 
-            for(int i = 0; i < list_y.Count; i++)
+            tmp_step = ratio * 10;
+
+            for (int i = 0; i < list_y.Count; i++)
             {
                 list_y[i] *= ratio;
             }
@@ -70,6 +73,7 @@ namespace ucGraphDrawer
 
             step_size_x =  (float)number_of_steps_for_unit_x * ((float)pictureBox1.Width - 2) / (float) (list_y.Count-1);
             step_size_y = (float)number_of_steps_for_unit_y * ((float)pictureBox1.Height);
+
         }
         private void init_Graphics()
         {
@@ -89,7 +93,7 @@ namespace ucGraphDrawer
             // Drawing horizontal lines
             for (int i = 0; i <= pictureBox1.Height; i++)
             {
-                gfx.DrawLine(pen, 0, Converting(i * number_of_steps_for_unit_y), pictureBox1.Width, Converting(i * number_of_steps_for_unit_y));
+                gfx.DrawLine(pen, 0, Converting(i * tmp_step), pictureBox1.Width, Converting(i * tmp_step));
             }
         }
 
