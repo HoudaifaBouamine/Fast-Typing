@@ -7,12 +7,22 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Media;
+
 
 namespace FastTyping
 {
     public partial class Form1 : Form
     {
         public Form1()
+        {
+            InitializeComponent();
+            typingBoard.Visible = false;
+
+            typingBoard.set(get_test_text());
+        }
+
+        private void load()
         {
             InitializeComponent();
             typingBoard.Visible = false;
@@ -31,7 +41,7 @@ namespace FastTyping
             shpw_time_left(new TimeSpan (0,0,(int)round_time));
             //l.Show();
             
-
+           
         }
 
 
@@ -274,13 +284,7 @@ namespace FastTyping
 
         private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
-            if (!running)
-            {
-                running = true;
-                start_test();
-            }
-            
-            typingBoard.typing_Board_KeyDown(sender, e);
+          
         }
 
         private void check_if_first_click_Tick(object sender, EventArgs e)
@@ -295,6 +299,20 @@ namespace FastTyping
         private void panel2_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void Form1_KeyDown_1(object sender, KeyEventArgs e)
+        {
+
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Form1_KeyPress(object sender, KeyPressEventArgs e)
+        {
         }
     }
 }

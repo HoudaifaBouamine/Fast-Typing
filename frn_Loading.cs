@@ -33,5 +33,10 @@ namespace FastTyping
 
             if(progressBar1.Value >= progressBar1.Maximum) { timer1.Stop(); this.Close(); }
         }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

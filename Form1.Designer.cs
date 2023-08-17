@@ -36,6 +36,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.typingBoard = new WindowsFormsControlLibrary1.ucTypingBoard();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.Graph = new ucGraphDrawer.usGraph();
             this.label11 = new System.Windows.Forms.Label();
             this.lbl_time = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
@@ -52,7 +53,6 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.Graph = new ucGraphDrawer.usGraph();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -138,6 +138,16 @@
             this.panel2.Size = new System.Drawing.Size(1292, 573);
             this.panel2.TabIndex = 3;
             this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
+            // 
+            // Graph
+            // 
+            this.Graph.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(52)))), ((int)(((byte)(55)))));
+            this.Graph.Font = new System.Drawing.Font("Segoe UI Semibold", 12.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Graph.Location = new System.Drawing.Point(262, 82);
+            this.Graph.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.Graph.Name = "Graph";
+            this.Graph.Size = new System.Drawing.Size(981, 232);
+            this.Graph.TabIndex = 13;
             // 
             // label11
             // 
@@ -303,15 +313,9 @@
             this.label1.TabIndex = 3;
             this.label1.Text = "FastTyping";
             // 
-            // Graph
+            // timer1
             // 
-            this.Graph.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(52)))), ((int)(((byte)(55)))));
-            this.Graph.Font = new System.Drawing.Font("Segoe UI Semibold", 12.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Graph.Location = new System.Drawing.Point(262, 82);
-            this.Graph.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.Graph.Name = "Graph";
-            this.Graph.Size = new System.Drawing.Size(981, 232);
-            this.Graph.TabIndex = 13;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // Form1
             // 
@@ -328,6 +332,8 @@
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown_1);
+            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Form1_KeyPress);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);

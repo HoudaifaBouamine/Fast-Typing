@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using System.Reflection.Emit;
 using System.Runtime.InteropServices;
 using ColoredLable;
+using System.Media;
 
 namespace WindowsFormsControlLibrary1
 {
@@ -145,6 +146,9 @@ namespace WindowsFormsControlLibrary1
         public bool isRunning  = false ;
         public void typing_Board_KeyDown(object sender, KeyEventArgs e)
         {
+            SoundPlayer sp = new SoundPlayer("C:\\Users\\admin\\Desktop\\git\\FastTyping\\TypingBoardUserControl\\sounds\\click.wav");
+            sp.Play();
+
             if(stop) return ;
 
 
